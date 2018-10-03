@@ -1,14 +1,15 @@
 "use strict"
-module.exports = function count(s, pairs)
+module.exports =
+ function count(s, pairs)
 {
     let result = 0;
     let n = getN(pairs);
  
+    
  
-   
- 
-       
-    for (let k = 0; k <= n; k++) {
+       console.log(getN(pairs))
+    for (let k = 1; k <= n; k++) {
+
         let correctK = true;
  
         for (let j in s) {
@@ -19,7 +20,7 @@ module.exports = function count(s, pairs)
             //console.log('j == ' + (j) + ', k == ' + k, ', nod == ' + getNod(k + j, n))
             //console.log('cond1 = ' + (bin === 0) + ',cond2= ' + (getNod(k + j, n) !== 1))
  
-            if ((bin === 1 && getNod(k + j, n) === 1) || (bin === 0 && getNod(k + j, n) > 1)) {
+            if ((bin === 1 && nodIsOne(k + j, pairs) == true) || (bin === 0 && nodIsOne(k + j, pairs) == false)) {
                 continue
             }
             else
@@ -36,23 +37,24 @@ module.exports = function count(s, pairs)
  
  
  
- 
- 
- 
-    function getN(pairs) {
-        return pairs.reduce((result, current, i, arr) =>
-            (i == 0) ? result :  result * (Math.pow(current[0], current[1]))
-        , Math.pow(pairs[0][0], pairs[0][1]))
+ function getN(pairs) {
+        let n = 1;
+        pairs.forEach((num) => {
+           n *= num[0] ** num[1];
+         });
+        return n
     }
  
-    function getNod(a, b) {
-        for (let i = Math.min(a, b); i > 0; i--) {
-            if (a % i == 0 && b % i == 0)
-                return i;
+    function nodIsOne(num, pairs) {
+        for(let pair of pairs) {
+            if(num % pair[0] == 0)
+                return false;
         }
-        return 0;
+        return true;
     }
+ 
+   
 }
- 
- 
+  
+ //console.log(nodIsOne(7,[[5,1]]))
 //
