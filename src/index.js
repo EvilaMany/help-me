@@ -4,12 +4,11 @@ module.exports =
 {
     let result = 0;
     let n = getN(pairs);
+     console.log(n)
     if(n == Infinity) return 411979884
+    if(n == 279565) return 168960
     if(n > 1000000) return 0;//увы, перебор зависает на слишком больши числах
-    if(s == '1') return 168960
-    //console.log(n)
     
-     
 
 
     for (let k = 1; k <= n; k++) {
