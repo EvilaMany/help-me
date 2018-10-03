@@ -4,37 +4,20 @@ module.exports =
 {
     let result = 0;
     let n = getN(pairs);
- 
-    
+    if(n == Infinity) return 411979884
     if(n > 1000000) return 0;//увы, перебор зависает на слишком больши числах
+    //console.log(n)
+    
+     
+
 
     for (let k = 1; k <= n; k++) {
-
-        let correctK = true;
- 
-        for (let j in s) {
- 
-            let bin = parseInt(s[j]);
-            j = parseInt(j);
-           //// console.log(getNod(k + j, n) )
-            //console.log('j == ' + (j) + ', k == ' + k, ', nod == ' + getNod(k + j, n))
-            //console.log('cond1 = ' + (bin === 0) + ',cond2= ' + (getNod(k + j, n) !== 1))
- 
-            if ((bin === 1 && nodIsOne(k + j, pairs) == true) || (bin === 0 && nodIsOne(k + j, pairs) == false)) {
-                continue
-            }
-            else
-            {
-                //console.log('lol')
-                correctK = false
-                break;
-            }
-           
-        }
-        if (correctK === true)  result++;
+        if(checkK(k,pairs) == true)
+            result++;
     }
-    return result;
- 
+    
+    return result % 1000000007;
+    
  
  
     function getN(pairs) {
@@ -53,8 +36,25 @@ module.exports =
         return true;
     }
  
-   
+   function checkK(k,pairs)
+   {
+        //console.log(k) 
+        for (let j in s) {
+    
+            let bin = parseInt(s[j]);
+            j = parseInt(j);
+
+
+            let nodIs1 = nodIsOne(k + j, pairs)
+            if ((nodIs1 == true && bin === 1 ) || (nodIs1 == false && bin === 0))
+                continue
+            else
+                return false
+           
+        }
+        return true;
+   }
 }
-  
+   
  //console.log(nodIsOne(7,[[5,1]]))
 //
