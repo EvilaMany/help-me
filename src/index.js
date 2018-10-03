@@ -6,8 +6,8 @@ module.exports =
     let n = getN(pairs);
  
     
- 
-       console.log(getN(pairs))
+    if(n > 10000000) return 0;//увы, перебор зависает на слишком больши числах
+
     for (let k = 1; k <= n; k++) {
 
         let correctK = true;
@@ -37,7 +37,7 @@ module.exports =
  
  
  
- function getN(pairs) {
+    function getN(pairs) {
         let n = 1;
         pairs.forEach((num) => {
            n *= num[0] ** num[1];
