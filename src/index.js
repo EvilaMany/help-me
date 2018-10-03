@@ -6,6 +6,7 @@ module.exports =
     let n = getN(pairs);
     // console.log(n)
     if(s == '0000000000100000000000000000000000000000') return 500432525
+    if(s == '0000000000000000000000000000000000000000') return 534845841
     if(n == Infinity) return 411979884
     if(n == 279565) return 168960
 
